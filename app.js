@@ -58,6 +58,21 @@ app.post('/api/v1/tours', (req, res) => {
   );
 });
 
+app.patch('/api/v1/tours/:id', (req, res) => {
+  if (req.params.id > tours.length) {
+    res.status(404).json({
+      status: 'failed',
+      message: "Tour doesn't exist or invalid ID",
+    });
+  }
+  res.status(200).json({
+    status: 'success',
+    data: {
+      tour: 'Updated tour here.....',
+    },
+  });
+});
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}  `);
 });
